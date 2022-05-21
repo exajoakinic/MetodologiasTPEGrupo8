@@ -33,4 +33,9 @@ public class TurnoController {
     public Turno save(@RequestBody Turno turno) {
         return turnoService.save(turno);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        turnoService.delete(id);
+    }
 }
