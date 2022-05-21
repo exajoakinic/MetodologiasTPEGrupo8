@@ -1,10 +1,12 @@
 package com.turno.facil.controllers;
 
+import com.turno.facil.models.BetweenDatesDTO;
 import com.turno.facil.models.Turno;
 import com.turno.facil.services.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -38,4 +40,17 @@ public class TurnoController {
     public void delete(@PathVariable Long id) {
         turnoService.delete(id);
     }
+
+    @PostMapping("/disponiblesentrefechas")
+    public Turno findByDates(@PathVariable Long id) {
+        return turnoService.findById(id);
+    }
+
+    @GetMapping("/entrefechas")
+    public List<Turno> findByDates(@RequestBody BetweenDatesDTO betweenDates) {
+        return turnoService.findByDates(betweenDates.getFrom(), betweenDates.getTo());
+    }
+
+
+
 }

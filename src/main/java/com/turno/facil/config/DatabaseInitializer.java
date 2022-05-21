@@ -26,7 +26,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 
     public void initTurnos() {
         Turno t1 = Turno.builder()
-                .disponible(false)
+                .disponible(true)
                 .fecha(LocalDateTime.of(2022, 05, 13, 14, 30))
                 .build();
         Turno t2 = Turno.builder()
@@ -38,7 +38,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                 .fecha(LocalDateTime.of(2022, 05, 13, 15, 30))
                 .build();
         Turno t4 = Turno.builder()
-                .disponible(false)
+                .disponible(true)
                 .fecha(LocalDateTime.of(2022, 05, 13, 16, 00))
                 .build();
 
