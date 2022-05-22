@@ -6,7 +6,6 @@ async function turnosDisponiblesEntreFechas(from, to) {
         return data;
     }
     catch (error) {
-       console.log(error)
+        console.log(error)
     }
-}
 }
