@@ -6,6 +6,7 @@ import com.turno.facil.services.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -46,11 +47,15 @@ public class TurnoController {
         return turnoService.findById(id);
     }
 
-    @GetMapping("/entrefechas")
-    public List<Turno> findByDates(@RequestBody BetweenDatesDTO betweenDates) {
-        return turnoService.findByDates(betweenDates.getFrom(), betweenDates.getTo());
-    }
+   // @GetMapping("/turnosdisponibles/{from}/{to}")
+    //public List<Turno> findByDates(@RequestBody BetweenDatesDTO betweenDates) {
 
+        //return turnoService.findByDates(betweenDates.getFrom(), betweenDates.getTo());
+    //}
+    @GetMapping("/turnosdisponibles/{from}/{to}")
+    public List<Turno> findByDates(@PathVariable String from, @PathVariable String to) {
+        return turnoService.findByDates(LocalDate.parse(from), LocalDate.parse(to));
+    }
 
 
 }
