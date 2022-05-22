@@ -6,12 +6,8 @@
 /*----------Estilo header----------*/
 
 .header{
-    /*background-color:#ABB1CE; */
     height: 120px;
-    /* #FD5858 este es logo rojo*/
-    /*----- #5A81FA     letra----------*/
-   border-bottom:  solid 2px #5A81FA;
-
+    border-bottom:  solid 2px #5A81FA;
 }
 
 .logo{
