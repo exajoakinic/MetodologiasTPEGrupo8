@@ -1,0 +1,31 @@
+.modal-title {
+    color: cadetblue;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ul div li {
+    background-color: gray;
+    margin: 3%;
+    border-radius: 5px;
+    padding: 2%;
+    color: whitesmoke;
+}
+
+ul div li button {
+    justify-content: right;
+}
+
+.custombutton {
+    margin-bottom: 3%;
+}
+
+.modal-show {
+    display: block !important;
+}
+
+.modal-hidden {
+    display: none !important;
+}
