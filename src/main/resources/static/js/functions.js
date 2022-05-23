@@ -1,7 +1,10 @@
+
 "use strict";
 
 //se llama al DOM a traves del evento DOMContentLoaded
 document.addEventListener('DOMContentLoaded', async () => {
+
+
     async function turnosDisponiblesEntreFechas(from, to) {
         try {
             let obj = await fetch('/turno/turnosdisponibles/' + from + '/' + to);
@@ -33,16 +36,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     //     }
     // ]
 
+   
+
     const modal = document.querySelector('#modal');
-    const modalContainer = document.querySelector('#modal-container')
+    const modalContainer = document.querySelector('#modal-container');
 
     //se recorren los turnos y para cada uno se agrega el boton seleccionar, para poder seleccionar
     //un turno disponible de la lista
+
+
+    let modalVisible = document.querySelector(".modal-visible"); 
+    let btnVerProxTurnos = document.querySelector("#verTurnos");
+    btnVerProxTurnos.addEventListener("click" , ocultarModal); 
+    function ocultarModal () {
+        modalVisible.classList.toggle("ocultar");
+        modalContainer.classList.remove('modal-hidden');
+        modalContainer.classList.add('modal-show');
+    }
+
+   
     const btnCerrar = document.querySelector('#btn-cerrar');
+
+    modalContainer.classList.remove('modal-show');
+    modalContainer.classList.add('modal-hidden');
+
     btnCerrar.addEventListener('click', () => {
         modalContainer.classList.remove('modal-show');
         modalContainer.classList.add('modal-hidden');
+        modalVisible.classList.toggle("ocultar");
     })
+
+
     turnos.forEach((turno) => {
         const date = new Date(turno.fecha);
         const day = date.getDate();
@@ -71,4 +95,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         ul.appendChild(div);
         modal.appendChild(ul);
     })
+
+
+
+
 })
