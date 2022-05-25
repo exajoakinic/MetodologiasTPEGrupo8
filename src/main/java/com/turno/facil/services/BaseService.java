@@ -41,6 +41,10 @@ public abstract class BaseService<T extends BaseEntity> {
         throw new NotFoundException(entityName, id);
     }
 
+    public List<T> save(List<T> objects) {
+        return repository.saveAll(objects);
+    }
+
     public void delete(Long id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);

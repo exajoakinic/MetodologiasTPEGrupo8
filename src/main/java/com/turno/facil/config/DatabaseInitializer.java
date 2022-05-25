@@ -1,14 +1,22 @@
 package com.turno.facil.config;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.turno.facil.TurnoFacilApplication;
 import com.turno.facil.models.Medico;
 import com.turno.facil.models.Turno;
 import com.turno.facil.services.MedicoService;
 import com.turno.facil.services.TurnoService;
+import org.hibernate.annotations.SQLInsert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.logging.Logger;
 
 @Component
 public class DatabaseInitializer implements CommandLineRunner {
