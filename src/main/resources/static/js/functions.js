@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function turnosDisponiblesEntreFechas(from, to) {
         try {
-            let obj = await fetch('/turno/turnosdisponibles/' + from + '/' + to);
+            let obj = await fetch('https://testturnofacil.herokuapp.com/turno/turnosdisponibles/' + from + '/' + to);
             let data = await obj.json();
             //console.log(data)
             return data;
@@ -17,6 +17,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
     const turnos = await turnosDisponiblesEntreFechas("2022-05-13", "2022-05-17");
+
+    //se ordenan los turnos de forma ascendente 
+
+    turnos.sort((a, b) => {
+        const auxA = new Date(a.fecha);
+        const auxB = new Date(b.fecha);
+        if (auxA.getTime() > auxB.getTime()) return 1;
+        if (auxA.getTime() < auxB.getTime()) return -1;
+        return 0;
+    })
 
     /* const turnos = [
          {
@@ -36,24 +46,20 @@ document.addEventListener('DOMContentLoaded', async () => {
          }
      ] */
 
-   
+
     const modal = document.querySelector('#modal');
     const modalContainer = document.querySelector('#modal-container');
 
-    //se recorren los turnos y para cada uno se agrega el boton seleccionar, para poder seleccionar
-    //un turno disponible de la lista
-
-
-    let modalVisible = document.querySelector(".modal-visible"); 
+    let modalVisible = document.querySelector(".modal-visible");
     let btnVerProxTurnos = document.querySelector("#verTurnos");
-    btnVerProxTurnos.addEventListener("click" , ocultarModal); 
-    function ocultarModal () {
+    btnVerProxTurnos.addEventListener("click", ocultarModal);
+    function ocultarModal() {
         modalVisible.classList.toggle("ocultar");
         modalContainer.classList.remove('modal-hidden');
         modalContainer.classList.add('modal-show');
     }
 
-   
+
     const btnCerrar = document.querySelector('#btn-cerrar');
 
     modalContainer.classList.remove('modal-show');
@@ -65,18 +71,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         modalVisible.classList.toggle("ocultar");
     })
 
+    //se recorren los turnos y para cada uno se agrega el boton seleccionar, para poder seleccionar
+    //un turno disponible de la lista
 
     turnos.forEach((turno) => {
         const date = new Date(turno.fecha);
         const day = date.getDate();
-        const time = `${date.getHours()}:${date.getMinutes()}`
+        const time = date.getMinutes() >= 10 ? `${date.getHours()}:${date.getMinutes()}` : `${date.getHours()}:0${date.getMinutes()}`;
         const dayOfWeek = date.toLocaleDateString('es', { weekday: 'long' });
         const month = date.toLocaleDateString('es', { month: 'long' });
         const prunnedDay = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1);
         const ul = document.createElement('ul');
         const button = document.createElement('button');
         button.innerHTML = 'Seleccionar';
-        button.classList.add('btn', 'btn-light', 'btn-sm', 'col-3');
+        button.classList.add('btn', 'btn-light', 'btn-sm', 'col-3', 'btn-select-modal');
         button.addEventListener('click', () => {
             modalContainer.classList.remove('modal-show');
             modalContainer.classList.add('modal-hidden');

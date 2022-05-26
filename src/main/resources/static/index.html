@@ -1,58 +1,62 @@
 <!DOCTYPE html>
-	<html lang="en">
-	<head>
-	    <meta charset="UTF-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title>TurnoFacil</title>
-	    <link rel="stylesheet" href="styles/style.css">
-	
+<html lang="en">
 
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TurnoFacil</title>
+	<link rel="stylesheet" href="styles/style.css">
+
+
+</head>
+
+<body>
+	<header class="header">
+		<img class="logo" src="imagen/logo.png" alt="">
+	</header>
+
 	<body>
-	    <header class="header">
-			<img class="logo" src="imagen/logo.png" alt="">
-	    </header>
-	    <body>
-	    <!-- ---------- Modal ---------- -->
-	        <div class="modal-visible">
-	
+		<!-- ---------- Modal ---------- -->
+		<div class="modal-visible">
 
-	            <p class=modal-txt>
-	                NO HAY TURNOS DISPONIBLES EN EL RANGO DE FECHA INGRESADO.
-	            </p>
-	
 
-	            <p class=modal-txt>
-	                ¿DESEAR VER LOS TURNOS PARA LA SEMANA SIGUIENTE?
-	            </p>
+			<p class=modal-txt>
+				NO HAY TURNOS DISPONIBLES EN EL RANGO DE FECHA INGRESADO.
+			</p>
 
-	            <button type="button" id="verTurnos" class="btn-next-modal modal" >Ver proximos turnos</button> 
 
-	            <button class="btn-close-modal modal">Atras</button> 
-	        </div>
+			<p class=modal-txt>
+				¿DESEAR VER LOS TURNOS PARA LA SEMANA SIGUIENTE?
+			</p>
 
-			<div class="contenedor-noVisible" >
-				<div id="modal-container" class="modal modal-show modal-turnos" tabindex="-1" role="dialog">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">SELECCIONE UN TURNO</h5>
-							</div>
-							<div class="modal-body" id="modal">
-			
-							</div>
-							<div class="modal-footer">
-								<button type="button" id="btn-cerrar" class="btn btn-danger custombutton modal">Cerrar</button>
-							</div>
+			<button type="button" id="verTurnos" class="btn-next-modal modal">Ver proximos turnos</button>
+
+			<button class="btn-close-modal modal">Atras</button>
+		</div>
+
+		<div class="contenedor-noVisible">
+			<div id="modal-container" class="modal modal-show modal-turnos" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">SELECCIONE UN TURNO</h5>
+						</div>
+						<div class="modal-body" id="modal">
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="btn-cerrar" class="btn-close-modal modal">Cerrar</button>
 						</div>
 					</div>
 				</div>
 			</div>
-				
+		</div>
 
-			<script src="js/functions.js"></script>
 
-	    </body>
+		<script src="js/functions.js"></script>
+
 	</body>
+</body>
+
 </html>
