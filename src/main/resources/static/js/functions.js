@@ -18,26 +18,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     const turnos = await turnosDisponiblesEntreFechas("2022-05-13", "2022-05-17");
 
-    // const turnos = [
-    //     {
-    //         id: 1,
-    //         "fecha": "2022-05-13 14:30:00",
-    //         "disponible": true
-    //     },
-    //     {
-    //         "id": 2,
-    //         "fecha": "2022-05-13 16:30:00",
-    //         "disponible": true
-    //     },
-    //     {
-    //         "id": 3,
-    //         "fecha": "2022-05-15 10:30:00",
-    //         "disponible": true
-    //     }
-    // ]
+    /* const turnos = [
+         {
+             id: 1,
+             "fecha": "2022-05-13 14:30:00",
+             "disponible": true
+         },
+         {
+             "id": 2,
+             "fecha": "2022-05-13 16:30:00",
+             "disponible": true
+         },
+         {
+             "id": 3,
+             "fecha": "2022-05-15 10:30:00",
+             "disponible": true
+         }
+     ] */
 
    
-
     const modal = document.querySelector('#modal');
     const modalContainer = document.querySelector('#modal-container');
 
