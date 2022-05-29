@@ -4,7 +4,7 @@
 //se llama al DOM a traves del evento DOMContentLoaded
 document.addEventListener('DOMContentLoaded', async () => {
 
-
+    //Devuelve un listado de los turnos disponibles entre las fechas dadas en formato JSON
     async function turnosDisponiblesEntreFechas(from, to) {
         try {
             let obj = await fetch('https://testturnofacil.herokuapp.com/turno/turnosdisponibles/' + from + '/' + to);
@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     const turnos = await turnosDisponiblesEntreFechas("2022-05-13", "2022-05-17");
 
-    //se ordenan los turnos de forma ascendente 
-
+    //se ordenan los turnos de forma ascendente
     turnos.sort((a, b) => {
         const auxA = new Date(a.fecha);
         const auxB = new Date(b.fecha);
@@ -28,31 +27,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         return 0;
     })
 
-    /* const turnos = [
-         {
-             id: 1,
-             "fecha": "2022-05-13 14:30:00",
-             "disponible": true
-         },
-         {
-             "id": 2,
-             "fecha": "2022-05-13 16:30:00",
-             "disponible": true
-         },
-         {
-             "id": 3,
-             "fecha": "2022-05-15 10:30:00",
-             "disponible": true
-         }
-     ] */
-
-
     const modal = document.querySelector('#modal');
     const modalContainer = document.querySelector('#modal-container');
 
     let modalVisible = document.querySelector(".modal-visible");
     let btnVerProxTurnos = document.querySelector("#verTurnos");
     btnVerProxTurnos.addEventListener("click", ocultarModal);
+    //Se oculta el modal "Ver próximos turnos" y se muestra el del listado de turnos
     function ocultarModal() {
         modalVisible.classList.toggle("ocultar");
         modalContainer.classList.remove('modal-hidden');
@@ -65,6 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     modalContainer.classList.remove('modal-show');
     modalContainer.classList.add('modal-hidden');
 
+    //Si hace click en cerrar vuelve a la pantalla anterior
     btnCerrar.addEventListener('click', () => {
         modalContainer.classList.remove('modal-show');
         modalContainer.classList.add('modal-hidden');
@@ -73,7 +55,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     //se recorren los turnos y para cada uno se agrega el boton seleccionar, para poder seleccionar
     //un turno disponible de la lista
-
     turnos.forEach((turno) => {
         const date = new Date(turno.fecha);
         const day = date.getDate();
@@ -102,8 +83,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         ul.appendChild(div);
         modal.appendChild(ul);
     })
-
-
-
 
 })

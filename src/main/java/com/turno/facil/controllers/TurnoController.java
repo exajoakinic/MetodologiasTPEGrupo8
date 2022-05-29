@@ -42,16 +42,13 @@ public class TurnoController {
         turnoService.delete(id);
     }
 
+    //Mapeo para cuando hacen un get de turnos, retornar el listado
     @PostMapping("/disponiblesentrefechas")
     public Turno findByDates(@PathVariable Long id) {
         return turnoService.findById(id);
     }
 
-   // @GetMapping("/turnosdisponibles/{from}/{to}")
-    //public List<Turno> findByDates(@RequestBody BetweenDatesDTO betweenDates) {
-
-        //return turnoService.findByDates(betweenDates.getFrom(), betweenDates.getTo());
-    //}
+   //Mapeo para cuando hacen un get de turnos entre fechas, retornar el listado
     @GetMapping("/turnosdisponibles/{from}/{to}")
     public List<Turno> findByDates(@PathVariable String from, @PathVariable String to) {
         return turnoService.findByDates(LocalDate.parse(from), LocalDate.parse(to));

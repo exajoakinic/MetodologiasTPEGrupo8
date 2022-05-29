@@ -32,6 +32,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         initTurnos();
     }
 
+    //Se inicializan turnos para testing
     public void initTurnos() {
         Turno t1 = Turno.builder()
                 .disponible(true)
@@ -56,6 +57,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         this.turnoService.save(t4);
     }
 
+    //Se inicializan médicos para testing
     public void initMedicos() {
         Medico m1 = Medico.builder()
                 .nombre("Juan")
