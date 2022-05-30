@@ -20,7 +20,7 @@ public class DateTimeHandler extends StdDeserializer<LocalDateTime> {
         super(vc);
     }
 
-    /** Esto es para procesar los datos cargados al inicializar el server desde el archivo mock_data.json */
+    /* Esto es para procesar los datos cargados, al inicializar el server, en el archivo mock_data.json */
     @Override
     public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
         String dateTime = jsonParser.getText();

@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Component
+/* Initializer de algunos elementos para la bbdd. */
 public class DatabaseInitializer implements CommandLineRunner {
 
     @Autowired

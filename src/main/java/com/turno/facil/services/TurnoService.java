@@ -18,6 +18,7 @@ public class TurnoService extends BaseService<Turno> {
         this.turnoRepository = turnoRepository;
     }
 
+    /* Devuelve una lista de turnos en un rango de dos fechas proporcionadas. */
     public List<Turno> findByDates(LocalDate from, LocalDate to) {
         return turnoRepository.findByDates(from, to);
     }

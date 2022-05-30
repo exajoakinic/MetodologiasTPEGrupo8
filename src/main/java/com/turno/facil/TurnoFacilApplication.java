@@ -26,6 +26,7 @@ public class TurnoFacilApplication {
 		SpringApplication.run(TurnoFacilApplication.class, args);
 	}
 
+	/* Inicializa turnos a partir de un archivo .json y los guarda en la bbdd. */
 	@Bean
 	CommandLineRunner runner(TurnoService turnoService){
 		return args -> {
