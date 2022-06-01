@@ -17,38 +17,37 @@ public class TurnoController {
     @Autowired
     private TurnoService turnoService;
 
+    /* Define endpoint para obtener todos los turnos */
     @GetMapping("/")
     public List<Turno> findAll() {
         return turnoService.findAll();
     }
 
+    /* Define endpoint para obtener un turno por id */
     @GetMapping("/{id}")
     public Turno findById(@PathVariable Long id) {
         return turnoService.findById(id);
     }
 
+    /* Define endpoint para actualizar un turno */
     @PutMapping("/{id}")
     public Turno update(@RequestBody Turno turno, @PathVariable Long id) {
         return turnoService.update(turno, id);
     }
 
+    /* Define endpoint para guardar un turno */
     @PostMapping("/")
     public Turno save(@RequestBody Turno turno) {
         return turnoService.save(turno);
     }
 
+    /* Define endpoint para borrar turno por id */
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         turnoService.delete(id);
     }
 
-    //Mapeo para cuando hacen un get de turnos, retornar el listado
-    @PostMapping("/disponiblesentrefechas")
-    public Turno findByDates(@PathVariable Long id) {
-        return turnoService.findById(id);
-    }
-
-   //Mapeo para cuando hacen un get de turnos entre fechas, retornar el listado
+    /* Define endpoint para obtener todos los turnos en un rango de fechas */
     @GetMapping("/turnosdisponibles/{from}/{to}")
     public List<Turno> findByDates(@PathVariable String from, @PathVariable String to) {
         return turnoService.findByDates(LocalDate.parse(from), LocalDate.parse(to));

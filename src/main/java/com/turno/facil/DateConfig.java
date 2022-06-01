@@ -14,6 +14,7 @@ public class DateConfig {
     private static final String dateFormat = "yyyy-MM-dd";
     private static final String dateTimeFormat = "yyyy-MM-dd HH:mm:ss";
 
+    /* Mapper para serializar y deserializar los objetos de tipo fecha */
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
         return builder -> {
