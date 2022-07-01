@@ -17,24 +17,26 @@
 	</header>
 
 	<body>
-		<div>
-			<div class="modal-header">
-				<h3 class="modal-title">SELECCIONE MEDICO Y RANGO DE FECHAS</h3>
-			</div>
-			<div>
-				<p class="modal-title">MEDICOS</p>
-				<select name="" id="">
-					<option value="medicos">Seleccione Medico</option>
-				</select>
-				<p>Desde: </p><input type="date" name="" id="">
-				<p>Hasta: </p><input type="date" name="" id="">
-			</div>
-			<div>
-				Tarde<input type="checkbox" name="" id="">
-				Mañana<input type="checkbox" name="" id="">
-			</div>
-			<button class="btn-next-modal modal">Buscar Turnos</button>
-		</div>		
+		<div class="container-filtros modal-visible">
+			<form class="form-filtros">
+				<h3 class="modal-title">SELECCIONE MÉDICO Y RANGO DE FECHAS</h3>
+
+				<div class="container-medico">
+					<p class="modal-title">MÉDICOS</p>
+					<select name="" id="" class="input-medico">
+						<option value="medicos">Seleccione Médico</option>
+					</select>
+					<p class="modal-title">Desde: <input class="input-medico" type="date" name="" id=""></p>
+					<p class="modal-title">Hasta: <input class="input-medico" type="date" name="" id=""></p>
+				</div>
+				<div>
+					<p class="modal-title"> Tarde<input type="checkbox" name="" id=""> Mañana<input type="checkbox"
+							name="" id="" class="modal-title"> </p>
+
+				</div>
+				<button class="btn-next-modal modal modal-btn">Buscar Turnos</button>
+			</form>
+		</div>
 
 
 

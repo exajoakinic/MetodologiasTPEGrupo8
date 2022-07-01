@@ -1,17 +1,17 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
 * {
     font-family: 'Roboto', sans-serif;
 }
 
 /*----------Estilo header----------*/
 
-.header{
+.header {
     height: 120px;
-    border-bottom:  solid 2px #5A81FA;
+    border-bottom: solid 2px #5A81FA;
 }
 
-.logo{
+.logo {
     height: 90px;
     margin: 10px;
     margin-left: 50px;
@@ -22,10 +22,10 @@
 
 .modal-visible {
     background: #F2F5FF;
-    border-radius: 30px; 
+    border-radius: 30px;
     border: #5A81FA solid 3px;
     position: fixed;
-    width: 750px; 
+    width: 750px;
     height: 400px;
     margin-top: -150px;
     margin-left: -375px;
@@ -48,8 +48,9 @@
     justify-content: center;
     align-items: center;
     box-shadow:
-    0 0 10px #b0acac; 
+        0 0 10px #b0acac;
 }
+
 .btn-next-modal {
     background-color: #5A81FA;
     border: solid #5A81FA;
@@ -59,7 +60,8 @@
     height: 50px;
 }
 
-.btn-close-modal , .custombutton {
+.btn-close-modal,
+.custombutton {
     background-color: #FD5858;
     border: solid #FD5858;
     margin-bottom: 10px;
@@ -70,7 +72,7 @@
 
 .modal-txt {
     color: #868686;
-    font-size: 25px;  
+    font-size: 25px;
     margin: 0;
     width: 700px;
     text-align: center;
@@ -88,22 +90,22 @@ ul li {
     list-style-type: none;
 }
 
-.contenedor-noVisible{
+.contenedor-noVisible {
     display: flex;
     justify-content: center;
 }
 
 .modal-show {
     background: #F2F5FF;
-    border-radius: 30px; 
+    border-radius: 30px;
     border: #5A81FA solid 3px;
-    width: 750px; 
+    width: 750px;
     margin-top: 40px;
     display: block !important;
     text-align: center;
 }
 
-.modal-show > div ul li {
+.modal-show>div ul li {
     background-color: rgb(201, 200, 200);
     margin: 3%;
     border-radius: 5px;
@@ -113,8 +115,8 @@ ul li {
     justify-content: space-between;
 }
 
-.modal-show > div ul li button {
-    background-color: #5A81FA ;
+.modal-show>div ul li button {
+    background-color: #5A81FA;
     border: #5A81FA solid 3px;
     color: white;
     text-transform: uppercase;
@@ -122,7 +124,7 @@ ul li {
     border-radius: 5px;
 }
 
-.modal-footer{
+.modal-footer {
     display: flex;
     justify-content: center;
 }
@@ -133,4 +135,21 @@ ul li {
 
 .ocultar {
     display: none !important;
+}
+
+.input-medico {
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #868686;
+    color: dimgrey
+}
+
+.container-filtros {
+    padding-bottom: 10px;
+}
+
+.modal-btn {
+    width: 100%;
 }
