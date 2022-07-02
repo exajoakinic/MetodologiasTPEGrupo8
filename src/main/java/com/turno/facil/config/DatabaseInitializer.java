@@ -2,19 +2,17 @@ package com.turno.facil.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.turno.facil.TurnoFacilApplication;
 import com.turno.facil.models.Medico;
 import com.turno.facil.models.Turno;
 import com.turno.facil.services.MedicoService;
 import com.turno.facil.services.TurnoService;
-import org.hibernate.annotations.SQLInsert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -26,40 +24,37 @@ public class DatabaseInitializer implements CommandLineRunner {
     private MedicoService medicoService;
     @Autowired
     private TurnoService turnoService;
+    private static Logger log = Logger.getLogger(DatabaseInitializer.class.getName());
 
     @Override
     public void run(String... args) throws Exception {
-        initMedicos();
-        initTurnos();
+        initMedicosAndTurnos();
     }
 
-    //Se inicializan turnos para testing
-    public void initTurnos() {
-        Turno t1 = Turno.builder()
-                .disponible(true)
-                .fecha(LocalDateTime.of(2022, 05, 13, 14, 30))
-                .build();
-        Turno t2 = Turno.builder()
-                .disponible(false)
-                .fecha(LocalDateTime.of(2022, 05, 13, 15, 00))
-                .build();
-        Turno t3 = Turno.builder()
-                .disponible(false)
-                .fecha(LocalDateTime.of(2022, 05, 13, 15, 30))
-                .build();
-        Turno t4 = Turno.builder()
-                .disponible(true)
-                .fecha(LocalDateTime.of(2022, 05, 13, 16, 00))
-                .build();
-
-        this.turnoService.save(t1);
-        this.turnoService.save(t2);
-        this.turnoService.save(t3);
-        this.turnoService.save(t4);
+    /* Inicializa turnos a partir de un archivo .json y los guarda en la bbdd. */
+    void mockDataLoader(List<Medico> medicos){
+            ObjectMapper mapper = new ObjectMapper();
+            TypeReference<List<Turno>> typeReference = new TypeReference<List<Turno>>(){};
+            InputStream inputStream = TypeReference.class.getResourceAsStream("/mock_data.json");
+            try {
+                List<Turno> turnos = mapper.readValue(inputStream,typeReference);
+                int id = 0;
+                for (Turno turno : turnos) {
+                    turno.setMedico(medicos.get(id));
+                    id++;
+                    if (id == medicos.size()) {
+                        id = 0;
+                    }
+                }
+                turnoService.save(turnos);
+                log.info("Mock data parsed and saved successfully.");
+            } catch (IOException e){
+                log.info("Error parsing mock data: " + e.getMessage());
+            }
     }
 
     //Se inicializan médicos para testing
-    public void initMedicos() {
+    public void initMedicosAndTurnos() {
         Medico m1 = Medico.builder()
                 .nombre("Juan")
                 .apellido("Martin")
@@ -81,5 +76,11 @@ public class DatabaseInitializer implements CommandLineRunner {
         this.medicoService.save(m2);
         this.medicoService.save(m3);
         this.medicoService.save(m4);
+        ArrayList<Medico> m = new ArrayList<>();
+        m.add(m1);
+        m.add(m2);
+        m.add(m3);
+        m.add(m4);
+        mockDataLoader(m);
     }
 }

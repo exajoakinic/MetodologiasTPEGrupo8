@@ -25,23 +25,4 @@ public class TurnoFacilApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TurnoFacilApplication.class, args);
 	}
-
-	/* Inicializa turnos a partir de un archivo .json y los guarda en la bbdd. */
-	@Bean
-	CommandLineRunner runner(TurnoService turnoService){
-		return args -> {
-			// read JSON and load json
-			ObjectMapper mapper = new ObjectMapper();
-			TypeReference<List<Turno>> typeReference = new TypeReference<List<Turno>>(){};
-			InputStream inputStream = TypeReference.class.getResourceAsStream("/mock_data.json");
-			System.out.println(inputStream);
-			try {
-				List<Turno> users = mapper.readValue(inputStream,typeReference);
-				turnoService.save(users);
-				log.info("Mock data parsed and saved successfully.");
-			} catch (IOException e){
-				log.info("Error parsing mock data: " + e.getMessage());
-			}
-		};
-	}
 }
