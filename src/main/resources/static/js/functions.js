@@ -1,31 +1,23 @@
-
 "use strict";
 
 //se llama al DOM a traves del evento DOMContentLoaded
 document.addEventListener('DOMContentLoaded', async () => {
 
-    //Devuelve un listado de los turnos disponibles entre las fechas dadas en formato JSON
-    async function turnosDisponiblesEntreFechas(from, to) {
+    const turnos = await turnosDisponiblesEntreFechas(1, "2022-05-13", "2022-05-17");
+
+    //Devuelve en formato JSON un listado de los turnos disponibles entre las fechas dadas y medico indicado
+    //Listado ordenado por fecha ascendente
+    async function turnosDisponiblesEntreFechas(id_medico, from, to) {
         try {
-            let obj = await fetch('https://testturnofacil.herokuapp.com/turno/turnosdisponibles/' + from + '/' + to);
+            let obj = await fetch('https://testturnofacil.herokuapp.com/turno/turnosdisponibles/' + id_medico + '/' + from + '/' + to);
             let data = await obj.json();
-            //console.log(data)
+            console.log(data);
             return data;
         }
         catch (error) {
             console.log(error)
         }
     }
-    const turnos = await turnosDisponiblesEntreFechas("2022-05-13", "2022-05-17");
-
-    //se ordenan los turnos de forma ascendente
-    turnos.sort((a, b) => {
-        const auxA = new Date(a.fecha);
-        const auxB = new Date(b.fecha);
-        if (auxA.getTime() > auxB.getTime()) return 1;
-        if (auxA.getTime() < auxB.getTime()) return -1;
-        return 0;
-    })
 
     const modal = document.querySelector('#modal');
     const modalContainer = document.querySelector('#modal-container');
