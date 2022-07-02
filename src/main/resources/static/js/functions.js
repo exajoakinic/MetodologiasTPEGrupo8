@@ -19,6 +19,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    //Devuelve en formato JSON listado de los médicos
+    async function getMedicos() {
+        try {
+            let obj = await fetch('https://testturnofacil.herokuapp.com/medico/');
+            let data = await obj.json();
+            console.log(data);
+            return data;
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
     const modal = document.querySelector('#modal');
     const modalContainer = document.querySelector('#modal-container');
 
