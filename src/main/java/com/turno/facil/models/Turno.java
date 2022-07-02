@@ -24,4 +24,6 @@ public class Turno implements BaseEntity {
     @JsonDeserialize(using = DateTimeHandler.class)
     private LocalDateTime fecha;
     private Boolean disponible;
+    @ManyToOne
+    private Medico medico;
 }
