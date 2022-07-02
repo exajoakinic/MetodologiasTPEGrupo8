@@ -53,5 +53,11 @@ public class TurnoController {
         return turnoService.findByDates(LocalDate.parse(from), LocalDate.parse(to));
     }
 
+    /* Define endpoint para obtener todos los turnos en un rango de fechas y por un medico */
+    @GetMapping("/turnosdisponibles/{id}/{from}/{to}")
+    public List<Turno> findByDatesAndMedicoId(@PathVariable String from, @PathVariable String to, @PathVariable Long id) {
+        return turnoService.findByDatesAndMedicId(LocalDate.parse(from), LocalDate.parse(to), id);
+    }
+
 
 }

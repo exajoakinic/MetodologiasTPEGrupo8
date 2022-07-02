@@ -22,4 +22,9 @@ public class TurnoService extends BaseService<Turno> {
     public List<Turno> findByDates(LocalDate from, LocalDate to) {
         return turnoRepository.findByDates(from, to);
     }
+
+    /* Devuelve una lista de turnos en un rango de dos fechas proporcionadas y relacionadas a un medico */
+    public List<Turno> findByDatesAndMedicId(LocalDate from, LocalDate to, Long id) {
+        return turnoRepository.findByDatesAndMedicoId(from, to, id);
+    }
 }

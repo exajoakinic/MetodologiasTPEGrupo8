@@ -13,4 +13,8 @@ public interface TurnoRepository extends JpaRepository<Turno, Long> {
     /* Query para encontrar todos los elementos en un rango de fechas. */
     @Query("SELECT t FROM Turno t WHERE t.fecha >= date(:dateFrom) AND t.fecha <= date(:dateTo) + 1 AND t.disponible = true")
     public List<Turno> findByDates(@Param("dateFrom") LocalDate from, @Param("dateTo") LocalDate to);
+
+    /* Query para encontrar todos los elementos en un rango de fechas y de un medico en especifico. */
+    @Query("SELECT t FROM Turno t WHERE t.fecha >= date(:dateFrom) AND t.fecha <= date(:dateTo) + 1 AND t.disponible = true AND t.medico.id = :idMedico ORDER BY t.fecha")
+    public List<Turno> findByDatesAndMedicoId(@Param("dateFrom") LocalDate from, @Param("dateTo") LocalDate to, @Param("idMedico") Long id);
 }
