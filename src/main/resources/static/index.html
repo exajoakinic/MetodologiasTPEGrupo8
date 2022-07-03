@@ -18,21 +18,22 @@
 
 	<body>
 		<div class="container-filtros modal-visible">
-			<form class="form-filtros">
+			<form id="form_fechas_y_medico" class="form-filtros">
 				<h3 class="modal-title">SELECCIONE MÉDICO Y RANGO DE FECHAS</h3>
 
 				<div class="container-medico">
 					<p class="modal-title">MÉDICOS</p>
-					<select name="" id="" class="input-medico">
-						<option value="medicos">Seleccione Médico</option>
+					<select name="medico" id="" class="input-medico">
+						<option value="none">Seleccione Médico</option>
 					</select>
-					<p class="modal-title">Desde: <input class="input-medico" type="date" name="" id=""></p>
-					<p class="modal-title">Hasta: <input class="input-medico" type="date" name="" id=""></p>
+					<p class="modal-title">Desde: <input class="input-medico" type="date" name="desde"></p>
+					<p class="modal-title">Hasta: <input class="input-medico" type="date" name="hasta"></p>
 				</div>
 				<div>
-					<p class="modal-title"> Tarde<input type="checkbox" name="" id=""> Mañana<input type="checkbox"
-							name="" id="" class="modal-title"> </p>
-
+					<p class="modal-title">
+						Tarde<input type="checkbox" name="tarde" checked>
+						Mañana<input type="checkbox" name="manana" class="modal-title" checked>
+					</p>
 				</div>
 				<button class="btn-next-modal modal modal-btn">Buscar Turnos</button>
 			</form>
@@ -41,25 +42,26 @@
 
 
 		<!-- ---------- Modal ---------- -->
-		<div class="modal-visible ocultar">
+		<div id="modal-prox-turnos" class="modal-visible ocultar">
 
 
 			<p class=modal-txt>
-				NO HAY TURNOS DISPONIBLES EN EL RANGO DE FECHA INGRESADO.
+				NO HAY TURNOS DISPONIBLES EN EL RANGO DE FECHA:
 			</p>
+			<p id="rango_fechas_proximos_turnos" class=modal-txt></p>
 
 
 			<p class=modal-txt>
 				¿DESEAR VER LOS TURNOS PARA LA SEMANA SIGUIENTE?
 			</p>
 
-			<button type="button" id="verTurnos" class="btn-next-modal modal">Ver proximos turnos</button>
+			<button id="ver-proximos-turnos" class="btn-next-modal modal">Ver proximos turnos</button>
 
-			<button class="btn-close-modal modal">Atras</button>
+			<button id="atras-proximos-turnos" class="btn-close-modal modal" id="ver-turnos">Atras</button>
 		</div>
 
 		<div class="contenedor-noVisible">
-			<div id="modal-container" class="modal modal-show modal-turnos" tabindex="-1" role="dialog">
+			<div id="modal-container" class="modal modal-hidden modal-turnos" tabindex="-1" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -75,7 +77,6 @@
 				</div>
 			</div>
 		</div>
-
 
 		<script src="js/functions.js"></script>
 

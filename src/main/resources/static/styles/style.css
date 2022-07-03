@@ -26,7 +26,7 @@
     border: #5A81FA solid 3px;
     position: fixed;
     width: 750px;
-    height: 400px;
+    height: 425px;
     margin-top: -150px;
     margin-left: -375px;
     top: 50%;
@@ -35,6 +35,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .modal {
